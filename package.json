@@ -1,0 +1,40 @@
+{
+  "name": "juno",
+  "description": "Juno Website",
+  "private": true,
+  "author": "Patrick Bauer",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "type-check": "nuxi typecheck",
+    "lint": "eslint --ext .ts,.js,.vue ."
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/google-fonts": "^3.0.2",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "eslint": "^8.49.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "nuxt": "^3.7.1",
+    "postcss-custom-properties": "^13.3.0",
+    "sass": "^1.66.1",
+    "typescript": "^5.2.2",
+    "vite-svg-loader": "^4.0.0",
+    "vue-tsc": "^1.8.10"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "@splidejs/vue-splide": "rriixx/vue-splide",
+    "@storyblok/nuxt": "^5.6.12",
+    "dayjs": "^1.11.9",
+    "pinia": "^2.1.6"
+  }
+}

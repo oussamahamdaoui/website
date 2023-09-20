@@ -1,0 +1,79 @@
+<script setup lang="ts">
+import type { SbBlokData } from '@storyblok/js/dist/types'
+import { useStoryStore } from '@/stores/story'
+import type { ISbAsset } from '@/types'
+import screens from '#tailwind-config/theme/screens'
+
+interface ISbBlokData extends SbBlokData {
+  image: ISbAsset
+  title: string
+  text: string
+  user: string
+  link: string
+}
+
+const props = defineProps({
+  blok: {
+    type: Object as PropType<ISbBlokData>,
+    required: true
+  }
+})
+const storyStore = useStoryStore()
+const user = storyStore.getMediumUserByUUID(props.blok.user)
+const rootRef = ref()
+const emit = defineEmits<{
+  'rendered': [value: HTMLElement]
+}>()
+
+onMounted(() => emit('rendered', rootRef.value))
+</script>
+
+<template>
+  <a
+    ref="rootRef"
+    :href="blok.link"
+    target="_blank"
+    class="group"
+  >
+    <div
+      v-if="blok.image?.filename"
+      class="mb-4 rounded-md overflow-hidden"
+    >
+      <img
+        :src="`${blok.image.filename}/m/0x413`"
+        :srcset="`
+          ${blok.image.filename}/m/0x495 495w,
+          ${blok.image.filename}/m/0x580 580w,
+          ${blok.image.filename}/m/0x870 870w
+        `"
+        :sizes="`50vw, (min-width: ${screens.sm}) 33.333vw, (min-width: ${screens.lg}) 25vw`"
+        :alt="blok.image.alt || ''"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        @load="emit('rendered', rootRef)"
+      >
+    </div>
+
+    <p class="text-beige-100 text-sm font-semibold mb-2">
+      {{ blok.title }}
+    </p>
+
+    <p class="break-words">{{ blok.text }}</p>
+
+    <div
+      v-if="user"
+      class="flex items-center mt-3"
+    >
+      <img
+        :src="`${user.avatar.filename}/m/102x102`"
+        :alt="user.avatar.alt || ''"
+        width="34"
+        height="34"
+        class="rounded-full border border-grey-400 mr-2"
+      >
+
+      <span class="text-beige-100 font-semibold">
+        {{ user.username }}
+      </span>
+    </div>
+  </a>
+</template>
