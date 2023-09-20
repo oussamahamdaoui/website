@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import 'font';
+
+  html {
+    @apply min-h-screen;
+  }
+
+  body {
+    @apply bg-brown-500;
+    @apply text-grey-100;
+    @apply antialiased;
+    @apply text-sm;
+    @apply min-h-screen;
+  }
+
+  header,
+  main > section > div,
+  footer > div {
+    @apply px-5;
+    @apply sm:px-6;
+    @apply max-w-screen-xl;
+    @apply mx-auto;
+    @apply w-full;
+  }
+
+  main {
+    @apply max-lg:pt-[91px];
+  }
+
+  b {
+    @apply font-semibold;
+  }
+}
+
+#__nuxt {
+  max-height: -webkit-fill-available; // mobile Safari fix
+}

@@ -1,0 +1,29 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/global/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/medium-user/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/ecosystem/medium/:path",
+      "destination": "/ecosystem/medium"
+    },
+    {
+      "source": "/ecosystem/twitter/:path",
+      "destination": "/ecosystem/twitter"
+    },
+    {
+      "source": "/ecosystem/youtube/:path",
+      "destination": "/ecosystem/youtube"
+    },
+    {
+      "source": "/ecosystem/shorts/:path",
+      "destination": "/ecosystem/shorts"
+    }
+  ]
+}
