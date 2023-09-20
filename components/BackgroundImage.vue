@@ -38,7 +38,12 @@ const imageStyles = `object-position: ${x}% ${y}%;`
     <img
       v-if="asset"
       :src="`${asset.filename}/m/`"
-      :srcset="`${asset.filename}/m/768x0 768w, ${asset.filename}/m/1024x0 1024w, ${asset.filename}/m/1440x0 1440w, ${asset.filename}/m/1920x0 1920w`"
+      :srcset="`
+        ${asset.filename}/m/1280x0/filters:quality(90) 640w,
+        ${asset.filename}/m/2048x0/filters:quality(90) 1024w,
+        ${asset.filename}/m/2880x0/filters:quality(90) 1440w,
+        ${asset.filename}/m/3840x0/filters:quality(90) 2560w
+      `"
       sizes="100vw"
       alt=""
       class="object-cover w-full h-full"
