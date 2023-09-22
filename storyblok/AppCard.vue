@@ -91,7 +91,7 @@ const bgImageStyles = computed(() => props.blok?.bgImageStyles || undefined)
 
     <img
       v-if="blok?.bgImage?.filename"
-      :src="blok.bgImage.filename"
+      :src="$imageService(blok.bgImage.filename)"
       alt=""
       class="absolute z-0"
       :style="bgImageStyles"

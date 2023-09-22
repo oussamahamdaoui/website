@@ -37,12 +37,12 @@ const imageStyles = `object-position: ${x}% ${y}%;`
 
     <img
       v-if="asset"
-      :src="`${asset.filename}/m/`"
+      :src="$imageService(asset.filename)"
       :srcset="`
-        ${asset.filename}/m/1280x0/filters:quality(90) 640w,
-        ${asset.filename}/m/2048x0/filters:quality(90) 1024w,
-        ${asset.filename}/m/2880x0/filters:quality(90) 1440w,
-        ${asset.filename}/m/3840x0/filters:quality(90) 2560w
+        ${$imageService(asset.filename, '1280x0/filters:quality(90)')} 640w,
+        ${$imageService(asset.filename, '2048x0/filters:quality(90)')} 1024w,
+        ${$imageService(asset.filename, '2880x0/filters:quality(90)')} 1440w,
+        ${$imageService(asset.filename, '3840x0/filters:quality(90)')} 2560w
       `"
       sizes="100vw"
       alt=""

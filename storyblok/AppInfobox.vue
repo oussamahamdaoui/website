@@ -49,7 +49,7 @@ onUnmounted(() => {
       <img
         v-if="blok.image"
         ref="imageRef"
-        :src="blok.image.filename"
+        :src="$imageService(blok.image.filename, 'filters:quality(90)')"
         :alt="blok.image.alt"
         class="h-full object-cover object-right"
       >

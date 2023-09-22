@@ -29,7 +29,7 @@ defineProps({
       />
 
       <img
-        :src="`${blok.image.filename}/m/216x216`"
+        :src="$imageService(blok.image.filename, '216x216')"
         :alt="blok.image.alt ?? ''"
         class="aspect-square border-2 border-grey-400 rounded-xl p-1"
         width="84"
