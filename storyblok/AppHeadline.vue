@@ -10,6 +10,7 @@ interface ISbBlokData extends SbBlokData {
   text: string,
   leadingIcon: ISbAsset,
   textAlign: string,
+  limitMarginBottom: boolean,
 }
 
 const props = defineProps({
@@ -79,7 +80,8 @@ const attrs = computed(() => {
     :class="[
       { 'inline-flex items-center': isDaoDaoVariant || hasLeadingIcon },
       typography,
-      textAlign
+      textAlign,
+      { '!mb-1': props.blok?.limitMarginBottom }
     ]"
   >
     <img
