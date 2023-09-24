@@ -36,7 +36,7 @@ onMounted(() => {
       ref="splineViewer"
       :url="blok.url"
       loading="auto"
-      class="overflow-hidden"
+      class="overflow-hidden pointer-events-none"
     />
   </div>
 </template>
