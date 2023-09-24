@@ -33,7 +33,7 @@ useHead({
       />
 
       <div
-        class="lg:hidden z-50 relative"
+        class="lg:hidden relative z-50 p-4 -mr-4"
         @click="toggleNav"
       >
         <div class="w-7 h-0.5 bg-beige-200 group-[.j-active]:translate-y-2.5 transition-transform group-[.j-active]:opacity-0" />
