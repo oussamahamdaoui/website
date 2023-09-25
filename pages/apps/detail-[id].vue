@@ -42,7 +42,7 @@ const app = appsStore.apps.find(app => app.title === route.params.id)
               <div class="shrink-0">
                 <img
                   class="object-contain aspect-square bg-black rounded-xl"
-                  :src="`/ecosystem/${app.icon || 'fallback-app-icon.jpg'}`"
+                  :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
                   :alt="app.title"
                   width="72"
                   height="72"

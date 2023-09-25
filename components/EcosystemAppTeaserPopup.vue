@@ -22,7 +22,7 @@ defineProps({
   >
     <div class="flex gap-6">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.jpg'}`"
+        :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
         :alt="app.title"
         loading="lazy"
         width="64"
