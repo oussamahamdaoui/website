@@ -28,7 +28,7 @@ const imageStyles = `object-position: ${x}% ${y}%;`
 <template>
   <div
     v-if="hasImage"
-    :class="['absolute -z-10 w-full', layout === Layout.Home ? 'h-[553px]' : 'h-[317px]']"
+    :class="['absolute -z-10 w-full', layout === Layout.Home ? 'h-[553px]' : 'h-[317px] opacity-20']"
   >
     <div
       v-if="layout === Layout.Default"
