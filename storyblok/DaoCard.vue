@@ -134,7 +134,7 @@ function getIPFSImage(url: string) {
         to="https://google.com"
         target="_blank"
       >
-        Visit Dao
+        Visit DAO
       </AppButton>
     </div>
   </div>
