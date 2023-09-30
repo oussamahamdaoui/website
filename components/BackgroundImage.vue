@@ -54,7 +54,10 @@ function parallaxAnimate() {
   >
     <div class="absolute bottom-0 h-[165px] w-full bg-gradient-to-t from-brown-500 z-10" />
 
-    <div ref="imageRef">
+    <div
+      class="h-full"
+      ref="imageRef"
+    >
       <img
         v-if="asset"
         :src="$imageService(asset.filename)"
