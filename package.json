@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "type-check": "nuxi typecheck",
-    "lint": "eslint --ext .ts,.js,.vue ."
+    "lint": "eslint --ext .ts,.js,.vue .",
+    "local-ssl-proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
