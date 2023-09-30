@@ -21,6 +21,7 @@ const props = defineProps({
   }
 })
 
+const ticking = ref(false)
 const imageRef = ref<HTMLDivElement | null>(null)
 const hasImage = computed(() => props.asset || props.path)
 const { x, y } = useImageFocusPoint(props.asset)
@@ -28,12 +29,25 @@ const imageStyles = `object-position: ${x}% ${y}%;`
 const delayModifier = 4
 
 onMounted(() => {
-  window.addEventListener('scroll', parallaxAnimate)
+  window.addEventListener('scroll', scrollEvent)
+  screen.orientation.addEventListener('change', () => parallaxAnimate())
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', parallaxAnimate)
+  window.removeEventListener('scroll', scrollEvent)
+  screen.orientation.removeEventListener('change', parallaxAnimate)
 })
+
+function scrollEvent() {
+  if (ticking.value) return
+
+  window.requestAnimationFrame(() => {
+    parallaxAnimate()
+    ticking.value = false
+  })
+
+  ticking.value = true
+}
 
 function parallaxAnimate() {
   if (!imageRef.value) return
@@ -41,9 +55,15 @@ function parallaxAnimate() {
   const { scrollY } = window
   const { height } = imageRef.value.getBoundingClientRect()
 
-  if (scrollY > height) return
+  if (scrollY < 0 || scrollY > height) return
 
-  imageRef.value.setAttribute('style', `transform: translateY(${scrollY / delayModifier}px)`)
+  setTranslateYPosition(scrollY)
+}
+
+function setTranslateYPosition(position: number) {
+  if (!imageRef.value) return
+
+  imageRef.value.setAttribute('style', `transform: translateY(${(position / delayModifier).toFixed(2)}px)`)
 }
 </script>
 
@@ -55,8 +75,8 @@ function parallaxAnimate() {
     <div class="absolute bottom-0 h-[165px] w-full bg-gradient-to-t from-brown-500 z-10" />
 
     <div
-      class="h-full"
       ref="imageRef"
+      class="h-full will-change-transform"
     >
       <img
         v-if="asset"
