@@ -23,7 +23,7 @@ const { footerMenu } = storeToRefs(configStore)
         target="_blank"
         class="group flex items-center justify-center uppercase space-x-2 mt-14 text-xs text-grey-200 tracking-widest"
       >
-        <span>Website by</span>
+        <span>Designed by</span>
 
         <img
           src="@/assets/images/design-dao/designdao.png"
