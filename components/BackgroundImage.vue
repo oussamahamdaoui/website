@@ -29,8 +29,10 @@ const imageStyles = `object-position: ${x}% ${y}%;`
 const delayModifier = 4
 
 onMounted(() => {
+  if (detectMobile()) return
+
   window.addEventListener('scroll', scrollEvent)
-  screen.orientation.addEventListener('change', () => parallaxAnimate())
+  screen.orientation.addEventListener('change', parallaxAnimate)
 })
 
 onBeforeUnmount(() => {
@@ -57,13 +59,11 @@ function parallaxAnimate() {
 
   if (scrollY < 0 || scrollY > height) return
 
-  setTranslateYPosition(scrollY)
+  imageRef.value.setAttribute('style', `transform: translateY(${Math.floor(scrollY / delayModifier)}px)`)
 }
 
-function setTranslateYPosition(position: number) {
-  if (!imageRef.value) return
-
-  imageRef.value.setAttribute('style', `transform: translateY(${(position / delayModifier).toFixed(2)}px)`)
+function detectMobile() {
+  return 'ontouchmove' in window
 }
 </script>
 
