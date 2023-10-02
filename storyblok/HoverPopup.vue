@@ -74,7 +74,7 @@ watch(showCard, (newValue) => {
       <div
         v-show="showCard"
         ref="popupElem"
-        :class="['absolute left-1/2 -translate-x-1/2 z-50 shadow-2xl rounded-lg w-[400px]', positionBottom ? 'top-full' : 'bottom-full']"
+        :class="['absolute left-1/2 -translate-x-1/2 z-50 shadow-2xl rounded-lg w-[410px]', positionBottom ? 'top-full' : 'bottom-full']"
         @mouseenter="onCardMouseEnter"
         @mouseleave="onCardMouseLeave"
       >
