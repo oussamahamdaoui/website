@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
-import { useAppsStore } from '~/stores/apps'
+import { useAppsStore } from '@/stores/apps'
 import type { IApp } from '@/types'
 import { AppCategory } from '@/types'
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
 import PlayIcon from '@/assets/images/icons/play.svg?component'
-import { ISbAsset } from '~/types'
+import type { ISbAsset } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   image: ISbAsset,

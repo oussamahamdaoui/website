@@ -3,7 +3,7 @@ import type { ISbRichtext, SbBlokData } from '@storyblok/js/dist/types'
 import { useStoryStore } from '@/stores/story'
 import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
 import screens from '#tailwind-config/theme/screens'
-import { ISbAsset } from '@/types'
+import type { ISbAsset } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   image: ISbAsset

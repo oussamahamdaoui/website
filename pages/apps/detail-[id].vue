@@ -4,7 +4,7 @@ import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import GithubIcon from '@/assets/images/icons/github.svg?component'
 import TelegramIcon from '@/assets/images/icons/telegram.svg?component'
 import AppIcon from '@/assets/images/icons/app.svg?component'
-import { useAppsStore } from '~/stores/apps'
+import { useAppsStore } from '@/stores/apps'
 import { useLinksStore } from '@/stores/links'
 import { ButtonVariant, Spacing, Typography } from '@/types'
 

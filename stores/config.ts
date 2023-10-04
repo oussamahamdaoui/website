@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { H3Error } from 'h3'
 import type { ISbResult } from '@storyblok/js/dist/types'
-import { ISbConfigData } from '~/types'
+import type { ISbConfigData } from '@/types'
 
 export const useConfigStore = defineStore('config', () => {
   const runtimeConfig = useRuntimeConfig()

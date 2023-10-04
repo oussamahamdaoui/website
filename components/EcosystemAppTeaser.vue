@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppTag from '@/storyblok/AppTag.vue'
 import type { IApp } from '@/types'
-import DownloadIcons from '~/components/DownloadIcons.vue'
+import DownloadIcons from '@/components/DownloadIcons.vue'
 
 const props = defineProps({
   app: {

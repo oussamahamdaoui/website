@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
-import { ISbAsset } from '~/types'
+import type { ISbAsset } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   headline: SbBlokData[],

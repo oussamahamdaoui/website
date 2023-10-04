@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ButtonVariant } from '~/types'
-import AppButton from '~/storyblok/AppButton.vue'
+import { ButtonVariant } from '@/types'
+import AppButton from '@/storyblok/AppButton.vue'
 
 defineProps<{
   error: {

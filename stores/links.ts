@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import type { H3Error } from 'h3'
 import type { ISbResult } from '@storyblok/js/dist/types'
-import { AppCategory, ISbLinkApiObject } from '@/types'
+import { AppCategory } from '@/types'
+import type { ISbLinkApiObject } from '@/types'
 
 export const useLinksStore = defineStore('links', () => {
   const runtimeConfig = useRuntimeConfig()

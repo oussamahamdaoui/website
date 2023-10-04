@@ -44,7 +44,7 @@ export default defineNuxtConfig({
     typeCheck: true
   },
   tailwindcss: {
-    cssPath: '~/assets/scss/tailwind.scss',
+    cssPath: '@/assets/scss/tailwind.scss',
     exposeConfig: true
   },
   runtimeConfig: {
