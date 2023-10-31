@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import GithubIcon from '@/assets/images/icons/github.svg?component'
 import TelegramIcon from '@/assets/images/icons/telegram.svg?component'
@@ -11,8 +11,28 @@ import { ButtonVariant, Spacing, Typography } from '@/types'
 const route = useRoute()
 const appsStore = useAppsStore()
 const linkStore = useLinksStore()
+const runtimeConfig = useRuntimeConfig()
 
 const app = appsStore.apps.find(app => app.title === route.params.id)
+
+useSeoMeta({
+  title: app?.title ?? '',
+  ogTitle: app?.title ?? '',
+  description: app?.text ?? '',
+  ogDescription: app?.text ?? '',
+  ogImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/${app?.icon || 'fallback-app-icon.webp'}` ?? '',
+  twitterCard: 'summary_large_image',
+  twitterTitle: app?.title ?? '',
+  twitterDescription: app?.text ?? '',
+  twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
+})
+
+const backLink = computed(() => {
+  if (process.server || !app) return '/'
+  if (!history.state.back) return `/${linkStore.getLinkByAppCategory(app.category)?.slug}`
+
+  return history.state.back
+})
 </script>
 
 <template>
@@ -23,18 +43,17 @@ const app = appsStore.apps.find(app => app.title === route.params.id)
     <BackgroundImage
       v-if="app.headerImage"
       :path="`/ecosystem/${app.headerImage}`"
-      opacify
     />
 
     <TheHeader />
 
     <main>
-      <AppSection :spacing="Spacing.Lg">
+      <AppSection :spacing="Spacing.Md">
         <div>
           <div class="flex flex-wrap gap-6">
             <AppButton
               :variant="ButtonVariant.ArrowLeft"
-              :to="`/${linkStore.getLinkByAppCategory(app.category)?.slug}`"
+              :to="backLink"
               class="shrink-0"
             />
 

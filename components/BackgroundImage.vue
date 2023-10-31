@@ -14,10 +14,6 @@ const props = defineProps({
   layout: {
     type: String as PropType<Layout>,
     default: Layout.Default
-  },
-  opacify: {
-    type: Boolean,
-    default: false
   }
 })
 
@@ -80,12 +76,12 @@ function detectMobile() {
     >
       <img
         v-if="asset"
-        :src="$imageService(asset.filename)"
+        :src="$imageService(asset.filename, '3840x0/filters:quality(90)')"
         :srcset="`
-          ${$imageService(asset.filename, '1280x0/filters:quality(90)')} 640w,
-          ${$imageService(asset.filename, '2048x0/filters:quality(90)')} 1024w,
-          ${$imageService(asset.filename, '2880x0/filters:quality(90)')} 1440w,
-          ${$imageService(asset.filename, '3840x0/filters:quality(90)')} 2560w
+          ${$imageService(asset.filename, '1280x0/filters:quality(90)')} 1280w,
+          ${$imageService(asset.filename, '2048x0/filters:quality(90)')} 2048w,
+          ${$imageService(asset.filename, '2880x0/filters:quality(90)')} 2880w,
+          ${$imageService(asset.filename, '3840x0/filters:quality(90)')} 3840w
         `"
         sizes="100vw"
         alt=""
@@ -96,7 +92,7 @@ function detectMobile() {
         v-else
         :src="path"
         alt=""
-        :class="['object-cover w-full h-full', { 'opacity-20': opacify}]"
+        class="object-cover w-full h-full"
       >
     </div>
   </div>

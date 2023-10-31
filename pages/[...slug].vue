@@ -24,7 +24,7 @@ useSeoMeta({
 <template>
   <div
     v-if="story"
-    class="min-h-screen"
+    class="min-h-screen overflow-x-hidden"
   >
     <BackgroundImage
       v-if="story.content.bgImage"

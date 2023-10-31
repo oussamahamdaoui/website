@@ -54,9 +54,9 @@ const { data: video } = await useFetch<IVideoItem>(url, { key: props.blok.videoL
 
     <p
       v-if="video.title"
-      class="break-words"
+      class="line-clamp-6"
     >
-      {{ video.title.substring(0, 200) }}
+      {{ video.title }}
     </p>
   </a>
 </template>

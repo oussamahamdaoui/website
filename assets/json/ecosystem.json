@@ -772,11 +772,22 @@
   {
     "id": "aea049ab-c1c0-4d2c-a755-931f6fd74399",
     "icon": "nRide.png",
+    "headerImage": "nRide-header.jpg",
+    "preview": [
+      "preview/nride/select_destination.jpeg",
+      "preview/nride/received_request.jpeg",
+      "preview/nride/make_proposal.jpeg",
+      "preview/nride/accepted_proposal.jpeg",
+      "preview/nride/confirmed_opened.jpeg",
+      "preview/nride/confirmed_3.jpeg",
+      "preview/nride/complete_withdraw.jpeg",
+      "preview/nride/wallet.jpeg"
+    ],
     "title": "nRide",
     "text": "A Peer-to-Peer Ride Hailing Protocol",
     "category": "Consumer",
     "website": "https://www.nride.com/",
-    "github": "",
+    "github": "https://github.com/orgs/nride/repositories",
     "discord": "https://discord.gg/xHnBHSeT",
     "twitter": "https://twitter.com/nRide12",
     "telegram": ""

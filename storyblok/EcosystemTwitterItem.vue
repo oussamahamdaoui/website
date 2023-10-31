@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ISbRichtext, SbBlokData } from '@storyblok/js/dist/types'
 import { useStoryStore } from '@/stores/story'
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import screens from '#tailwind-config/theme/screens'
 import type { ISbAsset } from '@/types'
 

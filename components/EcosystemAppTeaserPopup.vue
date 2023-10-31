@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import GithubIcon from '@/assets/images/icons/github.svg?component'
 import TelegramIcon from '@/assets/images/icons/telegram.svg?component'

@@ -78,16 +78,16 @@ const textClasses = computed(() => [
 
     <div
       v-if="isPlayButton"
-      class="group relative bg-salmon-200 h-8 w-8 rounded-full mr-3 overflow-hidden"
+      class="group relative bg-salmon-200 h-8 w-8 rounded-full mr-3 overflow-hidden z-10"
     >
       <PlayIcon
-        class="absolute text-beige-200 top-1/2 left-[53%] -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 ease-in-out group-hover:scale-[5]"
+        class="absolute text-beige-200 top-1/2 left-[53%] -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 ease-in-out group-hover:scale-[5] j-safari-bug z-0"
         width="15"
         height="16"
       />
 
       <PlayIcon
-        class="absolute text-salmon-200 top-1/2 left-[53%] -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 ease-in-out scale-0 group-hover:scale-100"
+        class="absolute text-salmon-200 top-1/2 left-[53%] -translate-x-1/2 -translate-y-1/2 transition-transform duration-200 ease-in-out scale-0 group-hover:scale-100 j-safari-bug z-0"
         width="15"
         height="16"
       />
@@ -117,3 +117,10 @@ const textClasses = computed(() => [
     </span>
   </Component>
 </template>
+
+<style lang="scss" scoped>
+.j-safari-bug {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+</style>
