@@ -14,11 +14,12 @@ Example:
 {
   "uuid": "70a0794d-347e-4292-a782-2d12557c83c5";
   "icon": "main-icon.png",
-  "headerImage: "header-image-test-project.jpg",
-  "preview": [
-    "preview/MY_PROJECT/preview-1.jpeg",
-    "preview/MY_PROJECT/preview-2.jpeg",
-    "preview/MY_PROJECT/preview-3.jpeg"
+  "backgroundImage: "background-image-test-project.jpg",
+  "coverImage": "cover-image-test-project.jpg",
+  "appPreviews": [
+    "app-previews/MY_PROJECT/app-preview-1.jpg",
+    "app-previews/MY_PROJECT/app-preview-2.jpg",
+    "app-previews/MY_PROJECT/app-preview-3.jpg"
   ],
   "appLinks": {
     "chrome": "https://testproject.testproject",
@@ -38,11 +39,13 @@ Example:
 ```
 **uuid**: This is the ID. Generate a new UUID here https://www.uuidtools.com/v4
 
-**icon**: This is the name of the image file which should be present in `public/ecosystems/`
+**icon**: This is the name of the image file which should be present in `public/ecosystem/icons/`
 
-**headerImage**: This is the name of the header image file which should be present in `public/ecosystems/`
+**backgroundImage**: This is the name of the background image file which should be present in `public/ecosystem/background-images/`
 
-**preview**: This is an array with the name of the preview image files (at least 3) prefixed by `preview/MY_PROJECT/` which should be present in `public/ecosystems/preview/MY_PROJECT/`. Replace `MY_PROJECT` with the name of your project. 
+**coverImage**: This is the name of the cover image file which should be present in `public/ecosystem/cover-images`
+
+**appPreviews**: This is an array with the name of the preview image files (at least 3) prefixed by `app-previews/MY_PROJECT/` which should be present in `public/ecosystem/app-previews/MY_PROJECT/`. Replace `MY_PROJECT` with the name of your project as directory name. 
 
 **appLinks**: This is an object with links. Allowed keys are `chrome`, `firefox`, `android` or `ios` (optional)
 

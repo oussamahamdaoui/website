@@ -23,7 +23,7 @@ defineProps({
   >
     <div class="absolute rounded-md overflow-hidden w-full h-full">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
+        :src="app.coverImage ? `/ecosystem/cover-images/${app.coverImage}` : `/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         alt=""
         loading="lazy"
         class="absolute object-cover w-full h-full bg-black group-hover:scale-105 transition-transform duration-300"

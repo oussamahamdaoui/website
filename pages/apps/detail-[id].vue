@@ -13,18 +13,24 @@ const appsStore = useAppsStore()
 const linkStore = useLinksStore()
 const runtimeConfig = useRuntimeConfig()
 
-const app = appsStore.apps.find(app => app.title === route.params.id)
+const app = appsStore.apps.find(app => app.title === decodeURIComponent(route.params.id as string))
+
+if (!app) throw createError({
+  statusCode: 404,
+  statusMessage: 'The page you’re looking for can’t be found.',
+  fatal: true
+})
 
 useSeoMeta({
   title: app?.title ?? '',
   ogTitle: app?.title ?? '',
   description: app?.text ?? '',
   ogDescription: app?.text ?? '',
-  ogImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/${app?.icon || 'fallback-app-icon.webp'}` ?? '',
+  ogImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? '',
   twitterCard: 'summary_large_image',
   twitterTitle: app?.title ?? '',
   twitterDescription: app?.text ?? '',
-  twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
+  twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
 })
 
 const backLink = computed(() => {
@@ -41,8 +47,8 @@ const backLink = computed(() => {
     class="min-h-screen"
   >
     <BackgroundImage
-      v-if="app.headerImage"
-      :path="`/ecosystem/${app.headerImage}`"
+      v-if="app.backgroundImage"
+      :path="`/ecosystem/background-images/${app.backgroundImage}`"
     />
 
     <TheHeader />
@@ -61,7 +67,7 @@ const backLink = computed(() => {
               <div class="shrink-0">
                 <img
                   class="object-contain aspect-square bg-black rounded-xl"
-                  :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
+                  :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
                   :alt="app.title"
                   width="72"
                   height="72"
@@ -93,9 +99,9 @@ const backLink = computed(() => {
           </div>
 
           <AppSlider
-            v-if="app.preview?.length"
+            v-if="app.appPreviews?.length"
             class="mt-11"
-            :slides="app.preview"
+            :slides="app.appPreviews"
             path-prefix="/ecosystem/"
           />
 

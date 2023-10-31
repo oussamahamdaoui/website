@@ -48,7 +48,7 @@ const elementAttrs = computed(() => {
   >
     <div class="shrink-0">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
+        :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         :alt="app.title"
         loading="lazy"
         :width="imageSize"

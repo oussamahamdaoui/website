@@ -22,7 +22,7 @@ defineProps({
   >
     <div class="flex gap-6">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.webp'}`"
+        :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         :alt="app.title"
         loading="lazy"
         width="64"
@@ -43,9 +43,9 @@ defineProps({
     </div>
 
     <AppSlider
-      v-if="app.preview?.length"
+      v-if="app.appPreviews?.length"
       class="mt-6 overflow-hidden rounded-md"
-      :slides="app.preview"
+      :slides="app.appPreviews"
       :options="{
         lazyLoad: 'nearby',
         fixedHeight: '210px',
