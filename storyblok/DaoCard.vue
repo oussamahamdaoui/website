@@ -2,12 +2,13 @@
 import type { SbBlokData } from '@storyblok/js/dist/types'
 import dayjs from 'dayjs/esm'
 import relativeTime from 'dayjs/esm/plugin/relativeTime'
-import type { ISbAsset } from '@/types'
+import type { ISbAsset, ISbLinkObject } from '@/types'
 import { ButtonVariant, Typography } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   url: string,
-  coverImage: ISbAsset
+  coverImage: ISbAsset,
+  link: ISbLinkObject
 }
 
 interface IDao {
@@ -131,7 +132,7 @@ function getIPFSImage(url: string) {
 
       <AppButton
         :variant="ButtonVariant.Secondary"
-        to="https://google.com"
+        v-bind="useLinkHandler(blok.link)"
         target="_blank"
       >
         Visit DAO
