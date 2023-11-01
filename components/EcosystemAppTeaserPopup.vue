@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import GithubIcon from '@/assets/images/icons/github.svg?component'
 import TelegramIcon from '@/assets/images/icons/telegram.svg?component'
@@ -22,7 +22,7 @@ defineProps({
   >
     <div class="flex gap-6">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.jpg'}`"
+        :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         :alt="app.title"
         loading="lazy"
         width="64"
@@ -43,9 +43,9 @@ defineProps({
     </div>
 
     <AppSlider
-      v-if="app.preview?.length"
+      v-if="app.appPreviews?.length"
       class="mt-6 overflow-hidden rounded-md"
-      :slides="app.preview"
+      :slides="app.appPreviews"
       :options="{
         lazyLoad: 'nearby',
         fixedHeight: '210px',

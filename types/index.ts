@@ -139,8 +139,9 @@ export interface IAppLinks {
 export interface IApp {
   id: string,
   icon: string,
-  headerImage?: string,
-  preview?: Array<string>,
+  backgroundImage?: string,
+  coverImage?: string,
+  appPreviews?: Array<string>,
   appLinks?: IAppLinks,
   title: string,
   text: string,

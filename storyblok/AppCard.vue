@@ -51,7 +51,7 @@ const classes = computed(() => [
   { 'bg-gradient-to-br from-cyan-400 to-cyan-300 shadow-inner shadow-beige-200/10 text-beige-200': props.blok?.bgGradient === Gradient.Cyan },
   { 'bg-brown-300 border border-grey-400': props.blok?.bgGradient !== Gradient.Salmon && props.blok?.bgGradient !== Gradient.Cyan },
   { 'h-full': props.heightFull || props.blok?.heightFull },
-  { 'block hover:border-grey-300 transition-colors pr-9 relative': hasLink.value },
+  { 'block hover:border-grey-300 transition-colors pr-11 lg:pr-14 relative': hasLink.value },
   { relative: props.blok?.bgImage?.filename },
   { 'overflow-hidden': props.blok?.noOverflow && props.blok?.bgImage?.filename }
 ])
@@ -91,7 +91,7 @@ const bgImageStyles = computed(() => props.blok?.bgImageStyles || undefined)
 
     <img
       v-if="blok?.bgImage?.filename"
-      :src="blok.bgImage.filename"
+      :src="$imageService(blok.bgImage.filename, '800x0')"
       alt=""
       class="absolute z-0"
       :style="bgImageStyles"
@@ -99,9 +99,9 @@ const bgImageStyles = computed(() => props.blok?.bgImageStyles || undefined)
 
     <ArrowRightIcon
       v-if="hasLink"
-      class="absolute right-3 top-1/2 -translate-y-1/2 text-beige-200"
-      width="10"
-      height="17"
+      class="absolute right-4 lg:right-6 top-1/2 -translate-y-1/2 text-beige-200"
+      width="13"
+      height="19"
     />
   </Component>
 </template>

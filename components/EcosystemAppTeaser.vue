@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppTag from '@/storyblok/AppTag.vue'
 import type { IApp } from '@/types'
-import DownloadIcons from '~/components/DownloadIcons.vue'
+import DownloadIcons from '@/components/DownloadIcons.vue'
 
 const props = defineProps({
   app: {
@@ -48,7 +48,7 @@ const elementAttrs = computed(() => {
   >
     <div class="shrink-0">
       <img
-        :src="`/ecosystem/${app.icon || 'fallback-app-icon.jpg'}`"
+        :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         :alt="app.title"
         loading="lazy"
         :width="imageSize"

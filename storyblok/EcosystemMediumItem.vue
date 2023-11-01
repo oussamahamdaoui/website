@@ -40,11 +40,11 @@ onMounted(() => emit('rendered', rootRef.value))
       class="mb-4 rounded-md overflow-hidden"
     >
       <img
-        :src="`${blok.image.filename}/m/0x413`"
+        :src="$imageService(blok.image.filename, '0x413')"
         :srcset="`
-          ${blok.image.filename}/m/0x495 495w,
-          ${blok.image.filename}/m/0x580 580w,
-          ${blok.image.filename}/m/0x870 870w
+          ${$imageService(blok.image.filename, '0x495')} 495w,
+          ${$imageService(blok.image.filename, '0x580')} 580w,
+          ${$imageService(blok.image.filename, '0x870')} 870w
         `"
         :sizes="`50vw, (min-width: ${screens.sm}) 33.333vw, (min-width: ${screens.lg}) 25vw`"
         :alt="blok.image.alt || ''"
@@ -64,7 +64,7 @@ onMounted(() => emit('rendered', rootRef.value))
       class="flex items-center mt-3"
     >
       <img
-        :src="`${user.avatar.filename}/m/102x102`"
+        :src="$imageService(user.avatar.filename, '102x102')"
         :alt="user.avatar.alt || ''"
         width="34"
         height="34"

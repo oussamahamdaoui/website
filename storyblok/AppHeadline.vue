@@ -10,6 +10,7 @@ interface ISbBlokData extends SbBlokData {
   text: string,
   leadingIcon: ISbAsset,
   textAlign: string,
+  limitMarginBottom: boolean,
 }
 
 const props = defineProps({
@@ -47,9 +48,9 @@ const typography = computed(() => {
     case Typography.Secondary2:
       return ['text-cyan-200 text-xs uppercase tracking-widest', hasLeadingIcon.value ? 'mb-1.5' : 'mb-2.5']
     case Typography.Secondary1DaoDao:
-      return ['text-cyan-200 text-base md:text-base uppercase', hasLeadingIcon.value ? 'mb-2' : 'mb-3']
+      return ['text-cyan-200 text-base md:text-base uppercase tracking-widest', hasLeadingIcon.value ? 'mb-2' : 'mb-3']
     case Typography.Secondary2DaoDao:
-      return ['text-cyan-200 text-xs uppercase', hasLeadingIcon.value ? 'mb-1.5' : 'mb-2.5']
+      return ['text-cyan-200 text-xs uppercase tracking-widest', hasLeadingIcon.value ? 'mb-1.5' : 'mb-2.5']
     case Typography.HighlightLg:
       return ['text-beige-200 text-base font-semibold', hasLeadingIcon.value ? 'mb-1.5' : 'mb-2.5']
     case Typography.HighlightMd:
@@ -79,7 +80,8 @@ const attrs = computed(() => {
     :class="[
       { 'inline-flex items-center': isDaoDaoVariant || hasLeadingIcon },
       typography,
-      textAlign
+      textAlign,
+      { '!mb-1': props.blok?.limitMarginBottom }
     ]"
   >
     <img

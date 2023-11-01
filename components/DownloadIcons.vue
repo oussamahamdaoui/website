@@ -3,7 +3,7 @@ import ChromeIcon from '@/assets/images/icons/chrome.svg?component'
 import FirefoxIcon from '@/assets/images/icons/firefox.svg?component'
 import AndroidIcon from '@/assets/images/icons/android.svg?component'
 import IosIcon from '@/assets/images/icons/ios.svg?component'
-import { IAppLinks } from '@/types'
+import type { IAppLinks } from '@/types'
 
 const props = defineProps({
   links: {

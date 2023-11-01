@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import YoutubeIcon from '@/assets/images/icons/youtube.svg?component'
 import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import DaoDaoIcon from '@/assets/images/icons/daodao.svg?component'

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { H3Error } from 'h3'
 import type { ISbResult } from '@storyblok/js/dist/types'
-import { ISbConfigData } from '~/types'
+import type { ISbConfigData } from '@/types'
 
 export const useConfigStore = defineStore('config', () => {
   const runtimeConfig = useRuntimeConfig()
@@ -12,7 +12,8 @@ export const useConfigStore = defineStore('config', () => {
 
   // getters
   const headerLogo = computed(() => config.value?.headerLogo[0])
-  const headerMenu = computed(() => config.value?.headerMenu)
+  // filter only menu items which have a published story (unpublished ones do not have key "story")
+  const headerMenu = computed(() => config.value?.headerMenu.filter(blok => blok.link.story))
   const headerMenuSocial = computed(() => config.value?.headerMenuSocial)
   const footerMenu = computed(() => config.value?.footerMenu)
 

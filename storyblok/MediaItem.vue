@@ -27,13 +27,12 @@ const styles = computed(() => {
 
   return str
 })
-const isSVGFile = computed(() => /.svg$/.test(props.blok.asset.filename))
 </script>
 
 <template>
   <LinkWrapper :link="blok.link">
     <img
-      :src="`${blok.asset.filename}${!isSVGFile ? '/m/' : ''}`"
+      :src="$imageService(blok.asset.filename)"
       :alt="blok.asset.alt"
       loading="lazy"
       :style="styles"

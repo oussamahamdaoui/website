@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
-import { ISbAsset } from '~/types'
+import type { ISbAsset } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   headline: SbBlokData[],
@@ -49,7 +49,7 @@ onUnmounted(() => {
       <img
         v-if="blok.image"
         ref="imageRef"
-        :src="blok.image.filename"
+        :src="$imageService(blok.image.filename, 'filters:quality(90)')"
         :alt="blok.image.alt"
         class="h-full object-cover object-right"
       >

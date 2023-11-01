@@ -14,41 +14,86 @@ const props = defineProps({
   layout: {
     type: String as PropType<Layout>,
     default: Layout.Default
-  },
-  opacify: {
-    type: Boolean,
-    default: false
   }
 })
+
+const ticking = ref(false)
+const imageRef = ref<HTMLDivElement | null>(null)
 const hasImage = computed(() => props.asset || props.path)
 const { x, y } = useImageFocusPoint(props.asset)
 const imageStyles = `object-position: ${x}% ${y}%;`
+const delayModifier = 4
+
+onMounted(() => {
+  if (detectMobile()) return
+
+  window.addEventListener('scroll', scrollEvent)
+  screen.orientation.addEventListener('change', parallaxAnimate)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', scrollEvent)
+  screen.orientation.removeEventListener('change', parallaxAnimate)
+})
+
+function scrollEvent() {
+  if (ticking.value) return
+
+  window.requestAnimationFrame(() => {
+    parallaxAnimate()
+    ticking.value = false
+  })
+
+  ticking.value = true
+}
+
+function parallaxAnimate() {
+  if (!imageRef.value) return
+
+  const { scrollY } = window
+  const { height } = imageRef.value.getBoundingClientRect()
+
+  if (scrollY < 0 || scrollY > height) return
+
+  imageRef.value.setAttribute('style', `transform: translateY(${Math.floor(scrollY / delayModifier)}px)`)
+}
+
+function detectMobile() {
+  return 'ontouchmove' in window
+}
 </script>
 
 <template>
   <div
     v-if="hasImage"
-    :class="['absolute -z-10 w-full', layout === Layout.Home ? 'h-[553px]' : 'h-[317px]']"
+    :class="['absolute -z-10 w-full overflow-hidden', layout === Layout.Home ? 'h-[553px]' : 'h-[317px] opacity-20']"
   >
-    <div
-      v-if="layout === Layout.Default"
-      class="absolute bottom-0 h-[165px] w-full bg-gradient-to-t from-brown-500 z-10"
-    />
+    <div class="absolute bottom-0 h-[165px] w-full bg-gradient-to-t from-brown-500 z-10" />
 
-    <img
-      v-if="asset"
-      :src="`${asset.filename}/m/`"
-      :srcset="`${asset.filename}/m/768x0 768w, ${asset.filename}/m/1024x0 1024w, ${asset.filename}/m/1440x0 1440w, ${asset.filename}/m/1920x0 1920w`"
-      sizes="100vw"
-      alt=""
-      class="object-cover w-full h-full"
-      :style="imageStyles"
+    <div
+      ref="imageRef"
+      class="h-full will-change-transform"
     >
-    <img
-      v-else
-      :src="path"
-      alt=""
-      :class="['object-cover w-full h-full', { 'opacity-20': opacify}]"
-    >
+      <img
+        v-if="asset"
+        :src="$imageService(asset.filename, '3840x0/filters:quality(90)')"
+        :srcset="`
+          ${$imageService(asset.filename, '1280x0/filters:quality(90)')} 1280w,
+          ${$imageService(asset.filename, '2048x0/filters:quality(90)')} 2048w,
+          ${$imageService(asset.filename, '2880x0/filters:quality(90)')} 2880w,
+          ${$imageService(asset.filename, '3840x0/filters:quality(90)')} 3840w
+        `"
+        sizes="100vw"
+        alt=""
+        class="object-cover w-full h-full"
+        :style="imageStyles"
+      >
+      <img
+        v-else
+        :src="path"
+        alt=""
+        class="object-cover w-full h-full"
+      >
+    </div>
   </div>
 </template>

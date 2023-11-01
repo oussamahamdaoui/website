@@ -3,8 +3,8 @@ import { storeToRefs } from 'pinia'
 import type { SbBlokData } from '@storyblok/js/dist/types'
 import type { ISbMetadata } from '@/types'
 import { ButtonVariant } from '@/types'
-import { useStoryStore } from '~/stores/story'
-import AppButton from '~/storyblok/AppButton.vue'
+import { useStoryStore } from '@/stores/story'
+import AppButton from '@/storyblok/AppButton.vue'
 
 interface ISbBlokData extends SbBlokData {
   body: SbBlokData[],

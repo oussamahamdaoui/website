@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#f47677' }
       ],
       script: [
-        { type: 'module', src: 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js' }
+        { type: 'module', src: 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js', defer: true, tagPosition: 'bodyClose' }
       ]
     }
   },
@@ -44,13 +44,14 @@ export default defineNuxtConfig({
     typeCheck: true
   },
   tailwindcss: {
-    cssPath: '~/assets/scss/tailwind.scss',
+    cssPath: '@/assets/scss/tailwind.scss',
     exposeConfig: true
   },
   runtimeConfig: {
     public: {
       storyblokContentVersion: process.env.STORYBLOK_CONTENT_VERSION,
-      youtubeApiKey: process.env.YOUTUBE_API_KEY
+      youtubeApiKey: process.env.YOUTUBE_API_KEY,
+      metaLocationOrigin: process.env.META_LOCATION_ORIGIN
     }
   },
   googleFonts: {

@@ -108,9 +108,9 @@ if (!channel.value && video.value) await useFetch(channelUrl, { key: video.value
 
     <p
       v-if="video.snippet.description"
-      class="break-words"
+      class="line-clamp-6"
     >
-      {{ video.snippet.description.substring(0, 200) }}
+      {{ video.snippet.description }}
     </p>
 
     <div class="flex items-center mt-3">

@@ -1,18 +1,44 @@
 <script setup lang="ts">
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import DiscordIcon from '@/assets/images/icons/discord.svg?component'
 import GithubIcon from '@/assets/images/icons/github.svg?component'
 import TelegramIcon from '@/assets/images/icons/telegram.svg?component'
 import AppIcon from '@/assets/images/icons/app.svg?component'
-import { useAppsStore } from '~/stores/apps'
+import { useAppsStore } from '@/stores/apps'
 import { useLinksStore } from '@/stores/links'
 import { ButtonVariant, Spacing, Typography } from '@/types'
 
 const route = useRoute()
 const appsStore = useAppsStore()
 const linkStore = useLinksStore()
+const runtimeConfig = useRuntimeConfig()
 
-const app = appsStore.apps.find(app => app.title === route.params.id)
+const app = appsStore.apps.find(app => app.title === decodeURIComponent(route.params.id as string))
+
+if (!app) throw createError({
+  statusCode: 404,
+  statusMessage: 'The page you’re looking for can’t be found.',
+  fatal: true
+})
+
+useSeoMeta({
+  title: app?.title ?? '',
+  ogTitle: app?.title ?? '',
+  description: app?.text ?? '',
+  ogDescription: app?.text ?? '',
+  ogImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? '',
+  twitterCard: 'summary_large_image',
+  twitterTitle: app?.title ?? '',
+  twitterDescription: app?.text ?? '',
+  twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
+})
+
+const backLink = computed(() => {
+  if (process.server || !app) return '/'
+  if (!history.state.back) return `/${linkStore.getLinkByAppCategory(app.category)?.slug}`
+
+  return history.state.back
+})
 </script>
 
 <template>
@@ -21,20 +47,19 @@ const app = appsStore.apps.find(app => app.title === route.params.id)
     class="min-h-screen"
   >
     <BackgroundImage
-      v-if="app.headerImage"
-      :path="`/ecosystem/${app.headerImage}`"
-      opacify
+      v-if="app.backgroundImage"
+      :path="`/ecosystem/background-images/${app.backgroundImage}`"
     />
 
     <TheHeader />
 
     <main>
-      <AppSection :spacing="Spacing.Lg">
+      <AppSection :spacing="Spacing.Md">
         <div>
           <div class="flex flex-wrap gap-6">
             <AppButton
               :variant="ButtonVariant.ArrowLeft"
-              :to="`/${linkStore.getLinkByAppCategory(app.category)?.slug}`"
+              :to="backLink"
               class="shrink-0"
             />
 
@@ -42,7 +67,7 @@ const app = appsStore.apps.find(app => app.title === route.params.id)
               <div class="shrink-0">
                 <img
                   class="object-contain aspect-square bg-black rounded-xl"
-                  :src="`/ecosystem/${app.icon || 'fallback-app-icon.jpg'}`"
+                  :src="`/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
                   :alt="app.title"
                   width="72"
                   height="72"
@@ -74,9 +99,9 @@ const app = appsStore.apps.find(app => app.title === route.params.id)
           </div>
 
           <AppSlider
-            v-if="app.preview?.length"
+            v-if="app.appPreviews?.length"
             class="mt-11"
-            :slides="app.preview"
+            :slides="app.appPreviews"
             path-prefix="/ecosystem/"
           />
 

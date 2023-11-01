@@ -18,15 +18,6 @@ const styles = computed(() => {
 })
 
 const splineViewer = ref<HTMLElement | null>(null)
-
-onMounted(() => {
-  if (!splineViewer?.value?.shadowRoot) return
-  // fixes horizontal scrollbar on small screens
-  const sheet = new CSSStyleSheet()
-
-  sheet.replaceSync('canvas { width: 100%;height: 100%; }')
-  splineViewer.value.shadowRoot.adoptedStyleSheets.push(sheet)
-})
 </script>
 
 <template>
@@ -35,8 +26,8 @@ onMounted(() => {
     <spline-viewer
       ref="splineViewer"
       :url="blok.url"
-      loading="auto"
-      class="overflow-hidden"
+      loading="lazy"
+      class="overflow-hidden pointer-events-none"
     />
   </div>
 </template>

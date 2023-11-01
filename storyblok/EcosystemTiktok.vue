@@ -4,7 +4,6 @@ import type { SbBlokData } from '@storyblok/js/dist/types'
 import type { ISbMetadata } from '@/types'
 import { useStoryStore } from '@/stores/story'
 import { ButtonVariant } from '@/types'
-import AppButton from '@/storyblok/AppButton.vue'
 
 interface ISbBlokData extends SbBlokData {
   body: SbBlokData[],
@@ -21,7 +20,7 @@ defineProps({
 const storyStore = useStoryStore()
 const { ecosystemUpdatesItems } = storeToRefs(storyStore)
 
-await storyStore.loadEcosystemUpdates('ecosystem/medium/items')
+await storyStore.loadEcosystemUpdates('ecosystem/tiktok/items')
 </script>
 
 <template>
@@ -34,18 +33,18 @@ await storyStore.loadEcosystemUpdates('ecosystem/medium/items')
       />
 
       <MasonryLayout
-        v-if="ecosystemUpdatesItems['ecosystem/medium/items']?.length"
+        v-if="ecosystemUpdatesItems['ecosystem/tiktok/items']?.length"
         class="pt-14"
-        :items="ecosystemUpdatesItems['ecosystem/medium/items']"
+        :items="ecosystemUpdatesItems['ecosystem/tiktok/items']"
       />
 
       <div class="text-center">
         <AppButton
-          v-if="!storyStore.ecosystemUpdatesTotalReached('ecosystem/medium/items')"
+          v-if="!storyStore.ecosystemUpdatesTotalReached('ecosystem/tiktok/items')"
           :variant="ButtonVariant.Large"
           type-button
           class="mt-14 cursor-pointer"
-          @click="storyStore.loadMoreEcosystemUpdates('ecosystem/medium/items')"
+          @click="storyStore.loadMoreEcosystemUpdates('ecosystem/tiktok/items')"
         >
           Load more
         </AppButton>

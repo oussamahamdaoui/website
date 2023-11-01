@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStoryStore } from '~/stores/story'
+import { useStoryStore } from '@/stores/story'
 
 const storyStore = useStoryStore()
 const { ecosystemUpdatesItemsLatest } = storyStore

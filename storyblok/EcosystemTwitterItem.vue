@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ISbRichtext, SbBlokData } from '@storyblok/js/dist/types'
 import { useStoryStore } from '@/stores/story'
-import TwitterIcon from '@/assets/images/icons/twitter.svg?component'
+import TwitterIcon from '@/assets/images/icons/twitter-x.svg?component'
 import screens from '#tailwind-config/theme/screens'
-import { ISbAsset } from '@/types'
+import type { ISbAsset } from '@/types'
 
 interface ISbBlokData extends SbBlokData {
   image: ISbAsset
@@ -39,7 +39,7 @@ onMounted(() => emit('rendered', rootRef.value))
           class="inline-flex group/user items-center mb-4"
         >
           <img
-            :src="`${user.avatar.filename}/m/117x117`"
+            :src="$imageService(user.avatar.filename, '117x117')"
             :alt="user.avatar.alt || ''"
             width="39"
             height="39"
@@ -82,11 +82,11 @@ onMounted(() => emit('rendered', rootRef.value))
         class="overflow-hidden block rounded-sm mt-4"
       >
         <img
-          :src="`${blok.image.filename}/m/0x393`"
+          :src="$imageService(blok.image.filename, '0x393')"
           :srcset="`
-            ${blok.image.filename}/m/0x393 393w,
-            ${blok.image.filename}/m/0x570 570w,
-            ${blok.image.filename}/m/0x768 768w
+            ${$imageService(blok.image.filename, '0x393')} 393w,
+            ${$imageService(blok.image.filename, '0x570')} 570w,
+            ${$imageService(blok.image.filename, '0x768')} 768w
           `"
           :sizes="`50vw, (min-width: ${screens.sm}) 33.333vw, (min-width: ${screens.lg}) 25vw`"
           :alt="blok.image.alt || ''"

@@ -98,11 +98,11 @@
   {
     "id": "9c6a4827-8139-47b1-b5bb-5f27e2b6736b",
     "icon": "coinhall.jpg",
-    "headerImage": "header-image-coinhall.jpeg",
-    "preview": [
-      "preview/coinhall/1.jpeg",
-      "preview/coinhall/2.jpeg",
-      "preview/coinhall/3.jpeg"
+    "backgroundImage": "header-image-coinhall.jpeg",
+    "appPreviews": [
+      "app-previews/coinhall/1.jpeg",
+      "app-previews/coinhall/2.jpeg",
+      "app-previews/coinhall/3.jpeg"
     ],
     "title": "Coinhall",
     "text": "Coinhall provides real-time price charts and analytics for the Juno ecosystem.",
@@ -772,11 +772,23 @@
   {
     "id": "aea049ab-c1c0-4d2c-a755-931f6fd74399",
     "icon": "nRide.png",
+    "backgroundImage": "nRide-header.jpg",
+    "coverImage": "nRide-header.jpg",
+    "appPreviews": [
+      "app-previews/nride/select_destination.jpeg",
+      "app-previews/nride/received_request.jpeg",
+      "app-previews/nride/make_proposal.jpeg",
+      "app-previews/nride/accepted_proposal.jpeg",
+      "app-previews/nride/confirmed_opened.jpeg",
+      "app-previews/nride/confirmed_3.jpeg",
+      "app-previews/nride/complete_withdraw.jpeg",
+      "app-previews/nride/wallet.jpeg"
+    ],
     "title": "nRide",
     "text": "A Peer-to-Peer Ride Hailing Protocol",
     "category": "Consumer",
     "website": "https://www.nride.com/",
-    "github": "",
+    "github": "https://github.com/orgs/nride/repositories",
     "discord": "https://discord.gg/xHnBHSeT",
     "twitter": "https://twitter.com/nRide12",
     "telegram": ""
