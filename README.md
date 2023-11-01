@@ -12,7 +12,7 @@ You need to edit `ecosystem.json` in `assets/json/` and add your project's info.
 Example:
 ```
 {
-  "uuid": "70a0794d-347e-4292-a782-2d12557c83c5";
+  "id": "70a0794d-347e-4292-a782-2d12557c83c5";
   "icon": "main-icon.png",
   "backgroundImage: "background-image-test-project.jpg",
   "coverImage": "cover-image-test-project.jpg",
@@ -37,7 +37,7 @@ Example:
   "telegram": "https://t.me/TestProject"
 }
 ```
-**uuid**: This is the ID. Generate a new UUID here https://www.uuidtools.com/v4
+**id**: This is the ID. Generate a new one here https://www.uuidtools.com/v4
 
 **icon**: This is the name of the image file which should be present in `public/ecosystem/icons/`
 
