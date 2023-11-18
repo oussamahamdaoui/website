@@ -44,7 +44,7 @@ const backLink = computed(() => {
 <template>
   <div
     v-if="app"
-    class="min-h-screen"
+    class="min-h-screen flex flex-col"
   >
     <BackgroundImage
       v-if="app.backgroundImage"
@@ -53,7 +53,7 @@ const backLink = computed(() => {
 
     <TheHeader />
 
-    <main>
+    <main class="flex flex-col flex-grow justify-between">
       <AppSection :spacing="Spacing.Md">
         <div>
           <div class="flex flex-wrap gap-6">
@@ -201,7 +201,7 @@ const backLink = computed(() => {
           element="h6"
           class="mb-8"
         >
-          Other {{ app.category }} apps
+          Other {{ app.category }} Apps
         </AppHeadline>
 
         <AppsCategory

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Options } from '@splidejs/splide'
-import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 
-const props = defineProps({
+defineProps({
   slides: {
     type: Array as PropType<Array<string>>,
     required: true
@@ -14,19 +14,16 @@ const props = defineProps({
   options: {
     type: Object as PropType<Options>,
     default: () => ({
-      type: 'loop',
       perPage: 3,
-      perMove: 1,
       focus: 0,
+      omitEnd: true,
       lazyLoad: 'nearby',
-      fixedHeight: '240px',
       gap: '1.5rem',
-      pagination: true,
       breakpoints: {
-        768: {
+        1024: {
           perPage: 2
         },
-        640: {
+        768: {
           perPage: 1,
           arrows: false,
           gap: '1rem',
@@ -34,37 +31,43 @@ const props = defineProps({
         }
       }
     })
-  },
-  height: {
-    type: Number,
-    default: 240
   }
 })
 
-const totalHeight = computed(() => {
-  // 7*4 pagination margin-top + 6px pagination height
-  if (props.options.pagination) return props.height + 7 * 4 + 6
+const arrowPrevDisabled = ref(true)
+const arrowNextDisabled = ref(true)
 
-  return props.height
-})
+function updateArrowsState(splide: typeof Splide) {
+  arrowPrevDisabled.value = splide.Components.Arrows.arrows.prev.disabled
+  arrowNextDisabled.value = splide.Components.Arrows.arrows.next.disabled
+}
 </script>
 
 <template>
   <Splide
     :options="options"
-    :style="`height:${totalHeight}px`"
+    :has-track="false"
     class="max-sm:-mr-5"
+    @splide:arrows:updated="updateArrowsState"
   >
-    <SplideSlide
-      v-for="(slide, i) in slides"
-      :key="i"
-    >
-      <img
-        :src="`${pathPrefix}${slide}`"
-        alt=""
-        class="block w-full h-full object-cover aspect-video rounded-md"
-      >
-    </SplideSlide>
+    <div :class="['relative', { 'j-arrow-prev-disabled': arrowPrevDisabled, 'j-arrow-next-disabled': arrowNextDisabled }]">
+      <SplideTrack>
+        <SplideSlide
+          v-for="(slide, i) in slides"
+          :key="i"
+        >
+          <img
+            :src="`${pathPrefix}${slide}`"
+            alt=""
+            class="block w-full h-full object-cover aspect-[16/10.5] rounded-md"
+          >
+        </SplideSlide>
+      </SplideTrack>
+
+      <div class="splide__arrows" />
+    </div>
+
+    <ul class="splide__pagination" />
   </Splide>
 </template>
 
@@ -99,6 +102,14 @@ const totalHeight = computed(() => {
   }
 }
 
+.j-arrow {
+  &-prev-disabled .splide__track:before,
+  &-next-disabled .splide__track:after {
+    @apply opacity-0;
+    @apply transition-opacity;
+  }
+}
+
 .splide__track {
   &:before,
   &:after {
@@ -111,10 +122,12 @@ const totalHeight = computed(() => {
     @apply h-full;
     @apply absolute;
     @apply top-0;
+    @apply opacity-50;
+    @apply transition-opacity;
   }
 
   &:before {
-    @apply max-sm:hidden;
+    @apply max-md:hidden;
     @apply left-0;
     @apply bg-gradient-to-l;
   }
@@ -122,8 +135,6 @@ const totalHeight = computed(() => {
   &:after {
     @apply right-0;
     @apply bg-gradient-to-r;
-    @apply w-6;
-    @apply sm:w-32;
   }
 }
 
@@ -139,12 +150,12 @@ const totalHeight = computed(() => {
     }
 
     &--prev {
-      @apply left-0;
+      @apply left-2;
       @apply rotate-180;
     }
 
     &--next {
-      @apply right-0;
+      @apply right-2;
     }
 
     svg {

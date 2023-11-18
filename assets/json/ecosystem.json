@@ -99,6 +99,7 @@
     "id": "9c6a4827-8139-47b1-b5bb-5f27e2b6736b",
     "icon": "coinhall.jpg",
     "backgroundImage": "header-image-coinhall.jpeg",
+    "coverImage": "cover-coinhall.jpg",
     "appPreviews": [
       "app-previews/coinhall/1.jpeg",
       "app-previews/coinhall/2.jpeg",
@@ -499,15 +500,22 @@
   },
   {
     "id": "6b8aaa80-95a9-4f4b-a159-706c32054f45",
-    "icon": "komple.png",
-    "title": "Komple Marketplace",
-    "text": "No code, community-centric NFT marketplace builder",
-    "category": "Soon",
+    "icon": "komple.svg",
+    "backgroundImage": "background_komple.jpg",
+    "coverImage": "cover_komple.jpg",
+    "appPreviews": [
+      "app-previews/komple/1.jpg",
+      "app-previews/komple/2.jpg",
+      "app-previews/komple/3.jpg"
+    ],
+    "title": "Komple Framework",
+    "text": "Smart contract framework for building NFT based applications.",
+    "category": "NFT",
     "website": "https://komple.io",
     "github": "https://github.com/KompleTeam",
     "discord": "https://discord.gg/UkbmeFCUSG",
     "twitter": "https://twitter.com/KompleSocial",
-    "telegram": "https://t.me/komple_marketplace"
+    "telegram": ""
   },
   {
     "id": "8968582a-4126-4a7b-a679-ffa91043654d",
@@ -715,8 +723,15 @@
   {
     "id": "95adb6ee-f5e0-4cd2-93ed-2425586d9aee",
     "icon": "leap.jpg",
+    "backgroundImage": "background_leap.jpg",
+    "coverImage": "cover_leap.jpg",
+    "appPreviews": [
+      "app-previews/leap/s1.jpg",
+      "app-previews/leap/s2.jpg",
+      "app-previews/leap/s3.jpg"
+    ],
     "title": "Leap Wallet",
-    "text": "The Super Wallet for Cosmos.",
+    "text": "Access 50+ Cosmos chains with Leap Wallet - the secure and non-custodial wallet for the Internet of Blockchains. Stake assets, claim rewards, and perform one-click IBC transactions with ease. Join the #LeapFam today!",
     "category": "Wallet",
     "website": "https://www.leapwallet.io/cosmos",
     "github": "",
@@ -739,8 +754,17 @@
   {
     "id": "05da9c98-16a5-48a7-b08f-e2fb55a31b57",
     "icon": "cypher.png",
+    "backgroundImage": "background_cypher.jpg",
+    "coverImage": "cover_cypher.jpg",
+    "appPreviews": [
+      "app-previews/cypher/s1.jpg",
+      "app-previews/cypher/s2.jpg",
+      "app-previews/cypher/s3.jpg",
+       "app-previews/cypher/s4.jpg",
+       "app-previews/cypher/s5.jpg"
+    ],
     "title": "Cypher Wallet",
-    "text": "Multi-chain crypto wallet focused on EVM+Cosmos chains",
+    "text": "Cypher Wallet is a user-friendly crypto wallet app to interact with web3 applications across 12+ chains in the EVM and Cosmos ecosystems.",
     "category": "Wallet",
     "website": "https://www.cypherwallet.io/",
     "github": "https://github.com/CypherD-IO",
@@ -771,19 +795,20 @@
   },
   {
     "id": "aea049ab-c1c0-4d2c-a755-931f6fd74399",
-    "icon": "nRide.png",
-    "backgroundImage": "nRide-header.jpg",
-    "coverImage": "nRide-header.jpg",
+    "icon": "nride.jpg",
+    "backgroundImage": "background_nride.jpg",
+    "coverImage": "cover_nride.jpg",
     "appPreviews": [
-      "app-previews/nride/select_destination.jpeg",
-      "app-previews/nride/received_request.jpeg",
-      "app-previews/nride/make_proposal.jpeg",
-      "app-previews/nride/accepted_proposal.jpeg",
-      "app-previews/nride/confirmed_opened.jpeg",
-      "app-previews/nride/confirmed_3.jpeg",
-      "app-previews/nride/complete_withdraw.jpeg",
-      "app-previews/nride/wallet.jpeg"
+      "app-previews/nride/01.jpg",
+      "app-previews/nride/02.jpg",
+      "app-previews/nride/03.jpg",
+      "app-previews/nride/04.jpg",
+      "app-previews/nride/05.jpg"
     ],
+    "appLinks": {
+      "android": "https://play.google.com/store/apps/details?id=com.nride.rider_app",
+      "ios": "https://apps.apple.com/us/app/nride-rider/id6468989510?platform=iphone"
+    },
     "title": "nRide",
     "text": "A Peer-to-Peer Ride Hailing Protocol",
     "category": "Consumer",
@@ -795,9 +820,19 @@
   },
   {
     "id": "1ba96958-4d20-409d-8ba6-a0346eedc607",
-    "icon": "",
+    "icon": "cosmostation.svg",
+    "backgroundImage": "background_cosmostation.jpg",
+    "coverImage": "cover-cosmostation.jpg",
+    "appPreviews": [
+      "app-previews/cosmostation/s1.jpg",
+      "app-previews/cosmostation/s2.jpg",
+      "app-previews/cosmostation/s3.jpg",
+       "app-previews/cosmostation/s4.jpg",
+       "app-previews/cosmostation/s5.jpg",
+       "app-previews/cosmostation/s6.jpg"
+    ],
     "title": "Cosmostation",
-    "text": "Non-custodial wallet with high accessibility and security.",
+    "text": "Non-custodial multi-chain extension wallet powered by Cosmostation, the interchain validator. Cosmostation is a non-custodial multi-chain cryptocurrency browser extension wallet that supports 50+ chains including Ethereum, Cosmos, dYdX Chain, Sui, and more. With Cosmostation, you can manage all your assets with one wallet, one key. Cosmostation has been a web3 infrastructure team contributing to more than 50 protocols since 2018. Our suite of products include Mintscan block explorer, Cosmostation non-custodial crypto wallet, and node validator service. At Cosmostation, we bootstrap networks and onboard end-users.",
     "category": "Wallet",
     "website": "https://cosmostation.io/",
     "github": "",

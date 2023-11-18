@@ -64,7 +64,7 @@ const isDaoDaoVariant = computed(() => computedStyle.value === Typography.Second
 const dynamicElement = computed(() => isDaoDaoVariant.value ? 'a' : props.element ?? props.blok?.element ?? 'div')
 const attrs = computed(() => {
   if (isDaoDaoVariant.value) return {
-    href: 'https://daodao.zone/',
+    href: 'https://daodao.zone/dao/juno1el3vtsz7l4mw77nm9723t3uxud38mmth8f3nhq9n4washqndsudsg3xez6/proposals',
     target: '_blank'
   }
 

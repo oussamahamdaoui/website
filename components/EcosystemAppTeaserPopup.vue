@@ -46,10 +46,7 @@ defineProps({
       v-if="app.appPreviews?.length"
       class="mt-6 overflow-hidden rounded-md"
       :slides="app.appPreviews"
-      :options="{
-        lazyLoad: 'nearby',
-        fixedHeight: '210px',
-      }"
+      :options="{ pagination: false }"
       :height="210"
       path-prefix="/ecosystem/"
     />
