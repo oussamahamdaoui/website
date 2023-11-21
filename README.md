@@ -74,7 +74,8 @@ Submit a pull request to add your project to the Juno ecosystem page. Edit `ecos
     "ios": "link-to-ios-app"
   },
   "title": "Your Project Title",
-  "text": "Your project description.",
+  "shortDescription": "Your project short description.",
+  "longDescription": "Your project long description.",
   "category": "Your Project Category",
   "website": "your-project-website",
   "github": "your-github-link",
@@ -98,7 +99,9 @@ Submit a pull request to add your project to the Juno ecosystem page. Edit `ecos
 
 **title**: This is the name of your project
 
-**text**: This is the description of your project
+**shortDescription**: This is the short description of your project. *CAUTION:* A maximum of 40 characters is allowed!
+
+**longDescription**: This is the long description of your project.
 
 **category**: This is the type of your project. Choose between `Tooling`, `NFT`, `DeFi`, `Exchange`, `Wallet`, `Consumer`, `Gaming`, or `Soon` (if your project is coming soon and not launched yet)
 
