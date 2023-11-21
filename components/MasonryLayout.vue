@@ -95,7 +95,6 @@ async function onChildMounted(child: HTMLElement, index: number) {
 
   if (childComponents.value.length === props.items.length) await initLayout()
 }
-
 </script>
 
 <template>
@@ -124,6 +123,7 @@ async function onChildMounted(child: HTMLElement, index: number) {
 .j-masonry {
   @apply flex;
   flex-flow: column wrap;
+  @apply content-between;
 
   &.loaded {
     .item {
@@ -214,7 +214,7 @@ async function onChildMounted(child: HTMLElement, index: number) {
 /* Force new columns */
 .gap {
   @apply basis-full;
-  @apply w-6;
+  @apply w-0;
   @apply m-0;
   @apply p-0;
 
