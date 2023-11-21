@@ -27,8 +27,8 @@ const props = defineProps({
 const classes = computed(() => ({
   'bg-brown-400': props.bgColorAlt || !!props.blok?.backgroundColor?.value,
   'py-11': props.spacing === Spacing.Sm || props.blok?.spacing === Spacing.Sm,
-  'py-14': props.spacing === Spacing.Md || props.blok?.spacing === Spacing.Md,
-  'py-20': props.spacing === Spacing.Lg || props.blok?.spacing === Spacing.Lg
+  'py-11 lg:py-14': props.spacing === Spacing.Md || props.blok?.spacing === Spacing.Md,
+  'py-14 lg:py-20': props.spacing === Spacing.Lg || props.blok?.spacing === Spacing.Lg
 }))
 </script>
 
