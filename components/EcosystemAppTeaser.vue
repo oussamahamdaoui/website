@@ -70,10 +70,10 @@ const elementAttrs = computed(() => {
       </div>
 
       <p
-        v-if="app.text && !appLinks && !nativeTag"
+        v-if="app.shortDescription && !appLinks && !nativeTag"
         class="text-ellipsis line-clamp-2 overflow-hidden"
       >
-        {{ app.text }}
+        {{ app.shortDescription }}
       </p>
 
       <DownloadIcons

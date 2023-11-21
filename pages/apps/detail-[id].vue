@@ -7,13 +7,14 @@ import AppIcon from '@/assets/images/icons/app.svg?component'
 import { useAppsStore } from '@/stores/apps'
 import { useLinksStore } from '@/stores/links'
 import { ButtonVariant, Spacing, Typography } from '@/types'
+import type { IApp } from '@/types'
 
 const route = useRoute()
 const appsStore = useAppsStore()
 const linkStore = useLinksStore()
 const runtimeConfig = useRuntimeConfig()
 
-const app = appsStore.apps.find(app => app.title === decodeURIComponent(route.params.id as string))
+const app: IApp | undefined = appsStore.apps.find(app => app.title === decodeURIComponent(route.params.id as string))
 
 if (!app) throw createError({
   statusCode: 404,
@@ -24,12 +25,12 @@ if (!app) throw createError({
 useSeoMeta({
   title: app?.title ?? '',
   ogTitle: app?.title ?? '',
-  description: app?.text ?? '',
-  ogDescription: app?.text ?? '',
+  description: app?.shortDescription ?? '',
+  ogDescription: app?.shortDescription ?? '',
   ogImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? '',
   twitterCard: 'summary_large_image',
   twitterTitle: app?.title ?? '',
-  twitterDescription: app?.text ?? '',
+  twitterDescription: app?.shortDescription ?? '',
   twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
 })
 
@@ -107,7 +108,7 @@ const backLink = computed(() => {
 
           <div class="flex max-md:flex-col-reverse md:justify-between mt-11 gap-12 lg:gap-24">
             <div>
-              {{ app.text }}
+              {{ app.longDescription }}
             </div>
 
             <div class="max-md:flex flex-wrap gap-6 content-center md:space-y-4 md:w-5/12 lg:w-4/12">

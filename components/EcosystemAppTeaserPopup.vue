@@ -34,10 +34,10 @@ defineProps({
         <span class="font-semibold text-lg text-ellipsis line-clamp-1 overflow-hidden mb-0.5">{{ app.title }}</span>
 
         <p
-          v-if="app.text"
+          v-if="app.shortDescription"
           class="text-ellipsis line-clamp-2 overflow-hidden"
         >
-          {{ app.text }}
+          {{ app.shortDescription }}
         </p>
       </div>
     </div>
