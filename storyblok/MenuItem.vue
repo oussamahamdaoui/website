@@ -17,7 +17,10 @@ const linkHandler = useLinkHandler(props.blok.link)
 </script>
 
 <template>
-  <NuxtLink v-bind="linkHandler">
+  <NuxtLink
+    v-bind="linkHandler"
+    class="inline-block"
+  >
     {{ blok.text || blok.link?.story?.name }}
   </NuxtLink>
 </template>
