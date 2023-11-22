@@ -26,7 +26,7 @@ export const useStoryStore = defineStore('story', () => {
   }
 
   function ecosystemUpdatesItemsLatest(url: string) {
-    return ecosystemUpdatesItems.value[url].slice(0, 12)
+    return ecosystemUpdatesItems.value[url].slice(0, 20)
   }
 
   function ecosystemUpdatesTotalReached(url: string) {
@@ -112,7 +112,7 @@ export const useStoryStore = defineStore('story', () => {
   }
 
   async function loadEcosystemUpdates(url: string) {
-    if (!ecosystemUpdatesPage.value[url]) ecosystemUpdatesPage.value[url] = 1
+    ecosystemUpdatesPage.value[url] = 1
 
     const { data, error } = await useAsyncData<ISbResult, H3Error>(
       async () => await storyblokApi.get('cdn/stories', {
@@ -121,7 +121,7 @@ export const useStoryStore = defineStore('story', () => {
         starts_with: url,
         is_startpage: false,
         sort_by: 'created_at:desc',
-        per_page: 12,
+        per_page: 20,
         page: ecosystemUpdatesPage.value[url]
       })
     )
@@ -154,7 +154,7 @@ export const useStoryStore = defineStore('story', () => {
         starts_with: url,
         is_startpage: false,
         sort_by: 'created_at:desc',
-        per_page: 12,
+        per_page: 20,
         page: ecosystemUpdatesPage.value[url]
       })
     )

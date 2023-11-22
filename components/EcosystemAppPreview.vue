@@ -16,12 +16,9 @@ defineProps({
 <template>
   <NuxtLink
     :to="`/apps/detail-${encodeURIComponent(app.title)}`"
-    :class="[
-      'group flex items-end md:row-span-3 relative',
-      large ? 'min-h-[230px]' : 'h-[212px]'
-    ]"
+    :class="['group flex items-end md:row-span-3 relative', large ? 'min-h-[230px]' : 'h-[212px]']"
   >
-    <div class="absolute rounded-md overflow-hidden w-full h-full">
+    <div class="absolute rounded-md overflow-hidden w-full h-full z-0">
       <img
         :src="app.coverImage ? `/ecosystem/cover-images/${app.coverImage}` : `/ecosystem/icons/${app.icon || 'fallback-app-icon.webp'}`"
         alt=""

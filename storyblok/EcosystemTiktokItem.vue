@@ -4,6 +4,7 @@ import screens from '#tailwind-config/theme/screens'
 
 interface ISbBlokData extends SbBlokData {
   videoLink: string,
+  duration: string,
 }
 
 interface IVideoItem {
@@ -43,6 +44,14 @@ const { data: video } = await useFetch<IVideoItem>(url, { key: props.blok.videoL
         :alt="video.title"
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       >
+
+      <div class="absolute bottom-0 h-20 w-full bg-gradient-to-t from-brown-500/40 z-10" />
+
+      <div class="flex items-center absolute z-20 left-2 bottom-1.5 ">
+        <div class="border-solid border-l-beige-100 border-l-[12px] border-y-transparent border-y-[7px] border-r-0 mr-2" />
+
+        <span class="text-beige-100 font-semibold text-base">{{ blok.duration }}</span>
+      </div>
     </div>
 
     <p

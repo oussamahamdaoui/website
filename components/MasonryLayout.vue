@@ -142,7 +142,7 @@ async function onChildMounted(child: HTMLElement, index: number) {
 
   &:not(.gap) {
     // 12 items on initial load
-    @for $i from 1 to 13 {
+    @for $i from 1 to 51 {
       &:nth-child(#{$i}) {
         transition-delay: $i * 100ms;
       }

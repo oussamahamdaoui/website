@@ -20,7 +20,7 @@ defineProps({
 const storyStore = useStoryStore()
 const { ecosystemUpdatesItems } = storeToRefs(storyStore)
 
-await storyStore.loadEcosystemUpdates('ecosystem/shorts/items')
+await storyStore.loadEcosystemUpdates('updates/shorts/items')
 </script>
 
 <template>
@@ -33,18 +33,18 @@ await storyStore.loadEcosystemUpdates('ecosystem/shorts/items')
       />
 
       <MasonryLayout
-        v-if="ecosystemUpdatesItems['ecosystem/shorts/items']?.length"
+        v-if="ecosystemUpdatesItems['updates/shorts/items']?.length"
         class="pt-14"
-        :items="ecosystemUpdatesItems['ecosystem/shorts/items']"
+        :items="ecosystemUpdatesItems['updates/shorts/items']"
       />
 
       <div class="text-center">
         <AppButton
-          v-if="!storyStore.ecosystemUpdatesTotalReached('ecosystem/shorts/items')"
+          v-if="!storyStore.ecosystemUpdatesTotalReached('updates/shorts/items')"
           :variant="ButtonVariant.Large"
           type-button
           class="mt-14 cursor-pointer"
-          @click="storyStore.loadMoreEcosystemUpdates('ecosystem/shorts/items')"
+          @click="storyStore.loadMoreEcosystemUpdates('updates/shorts/items')"
         >
           Load more
         </AppButton>
