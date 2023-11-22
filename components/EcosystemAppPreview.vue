@@ -33,7 +33,7 @@ defineProps({
       :app="app"
       :large="large"
       :link="false"
-      class="z-20 text-beige-100"
+      class="z-20 text-beige-100 px-4"
     />
   </NuxtLink>
 </template>
