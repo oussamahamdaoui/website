@@ -15,6 +15,10 @@ defineProps({
 })
 
 const active = ref(false)
+
+function hide() {
+  active.value = false
+}
 </script>
 
 <template>
@@ -28,14 +32,19 @@ const active = ref(false)
     <Transition name="fade">
       <div
         v-if="active"
-        class="fixed top-0 left-0 w-full h-full z-[100] p-6 backdrop-blur-sm bg-brown-400/80 flex flex-col justify-center items-center"
+        class="fixed top-0 left-0 w-full h-full z-[100] p-6 flex flex-col justify-center items-center"
       >
-        <div class="flex flex-col items-end max-w-screen-xl w-full">
+        <div
+          class="backdrop-blur-sm bg-brown-400/80 w-full h-full absolute z-0"
+          @click="hide"
+        />
+
+        <div class="flex flex-col items-end max-w-screen-xl w-full z-10 relative">
           <CloseIcon
             width="20"
             height="20"
-            class="text-beige-200 mb-5 cursor-pointer"
-            @click="active = !active"
+            class="text-beige-200 mb-5 cursor-pointer absolute -top-8"
+            @click="hide"
           />
 
           <div class="aspect-video w-full max-h-[calc(100vh-88px)]">
