@@ -58,7 +58,9 @@ const emit = defineEmits<{
 const rootRef = ref()
 const runtimeConfig = useRuntimeConfig()
 const url = `https://www.googleapis.com/youtube/v3/videos?id=${props.blok.videoId}&key=${runtimeConfig.public.youtubeApiKey}&part=snippet,contentDetails&fields=items(snippet,contentDetails(duration))`
-const { data: video } = await useFetch(url, { key: props.blok.videoId, transform: (res: IVideosResponse) => res.items[0] })
+const { data: video } = useNuxtData<IVideoItem>(props.blok.videoId) // cache video data
+
+if (!video.value) await useFetch(url, { key: props.blok.videoId, transform: (res: IVideosResponse) => res.items[0] })
 const durationConverted = computed(() => video?.value ? dayjs.duration(video.value.contentDetails.duration).format('H:m:ss').replace(/^0:/, '') : '')
 const channelUrl = computed(() => {
   if (!video.value) return '' // accept call to fail if no channelId
