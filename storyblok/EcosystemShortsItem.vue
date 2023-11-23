@@ -79,7 +79,7 @@ onMounted(() => emit('rendered', rootRef.value))
       class="flex items-center mt-3"
     >
       <img
-        :src="$imageService(channel.avatar.filename, '102x102')"
+        :src="$imageService(channel.avatar.filename, '64x64')"
         :alt="channel.avatar.alt || ''"
         width="34"
         height="34"
