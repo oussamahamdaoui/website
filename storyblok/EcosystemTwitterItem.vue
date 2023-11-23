@@ -82,11 +82,11 @@ onMounted(() => emit('rendered', rootRef.value))
         class="overflow-hidden block rounded-sm mt-4"
       >
         <img
-          :src="$imageService(blok.image.filename, '0x393')"
+          :src="$imageService(blok.image.filename, '768x0')"
           :srcset="`
-            ${$imageService(blok.image.filename, '0x393')} 393w,
-            ${$imageService(blok.image.filename, '0x570')} 570w,
-            ${$imageService(blok.image.filename, '0x768')} 768w
+            ${$imageService(blok.image.filename, '393x0')} 393w,
+            ${$imageService(blok.image.filename, '570x0')} 570w,
+            ${$imageService(blok.image.filename, '768x0')} 768w
           `"
           :sizes="`50vw, (min-width: ${screens.sm}) 33.333vw, (min-width: ${screens.lg}) 25vw`"
           :alt="blok.image.alt || ''"

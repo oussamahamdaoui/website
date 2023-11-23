@@ -39,9 +39,9 @@ onMounted(() => emit('rendered', rootRef.value))
     <div class="relative mb-4 rounded-md overflow-hidden aspect-video">
       <img
         v-if="blok.image?.filename"
-        :src="$imageService(blok.image.filename, '413x0')"
+        :src="$imageService(blok.image.filename, '870x0')"
         :srcset="`
-          ${$imageService(blok.image.filename, '495x0')} 495w,
+          ${$imageService(blok.image.filename, '300x0')} 300w,
           ${$imageService(blok.image.filename, '580x0')} 580w,
           ${$imageService(blok.image.filename, '870x0')} 870w
         `"
@@ -79,7 +79,7 @@ onMounted(() => emit('rendered', rootRef.value))
       class="flex items-center mt-3"
     >
       <img
-        :src="$imageService(channel.avatar.filename, '102x102')"
+        :src="$imageService(channel.avatar.filename, '64x64')"
         :alt="channel.avatar.alt || ''"
         width="34"
         height="34"
