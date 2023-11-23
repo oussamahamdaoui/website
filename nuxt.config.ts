@@ -28,7 +28,8 @@ export default defineNuxtConfig({
     '@storyblok/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    'nuxt-gtag'
   ],
   storyblok: {
     accessToken: process.env.STORYBLOK_SPACE_TOKEN,
@@ -61,6 +62,10 @@ export default defineNuxtConfig({
     families: {
       Inter: [300, 400, 500, 600]
     }
+  },
+  gtag: {
+    id: process.env.GTAG,
+    loadingStrategy: 'async'
   },
   vite: {
     plugins: [
