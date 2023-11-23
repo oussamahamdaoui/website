@@ -144,9 +144,11 @@ function updateArrowsState(splide: typeof Splide) {
     @apply absolute;
     @apply top-1/2;
     @apply -translate-y-1/2;
+    @apply transition-opacity;
+    @apply duration-300;
 
     &:disabled {
-      @apply hidden;
+      @apply opacity-0;
     }
 
     &--prev {
