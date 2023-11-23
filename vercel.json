@@ -6,6 +6,14 @@
       "destination": "/"
     },
     {
+      "source": "/twitter-user/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/youtube-channel/:path*",
+      "destination": "/"
+    },
+    {
       "source": "/medium-user/:path*",
       "destination": "/"
     },

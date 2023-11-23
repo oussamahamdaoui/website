@@ -12,4 +12,5 @@ export default defineNuxtRouteMiddleware(async (to) => {
   await linksStore.loadLinks()
   await storyStore.loadEcosystemMediumUsers()
   await storyStore.loadEcosystemTwitterUsers()
+  await storyStore.loadEcosystemYoutubeChannel()
 })

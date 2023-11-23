@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import type { H3Error } from 'h3'
 import type { ISbResult } from '@storyblok/js/dist/types'
 import type { ISbStoryData } from 'storyblok-js-client'
-import type { ISbStoryDataContent, ISbStoryMediumUserContent, ISbStoryTwitterUserContent } from '@/types'
+import type { ISbStoryDataContent, ISbStoryMediumUserContent, ISbStoryTwitterUserContent, ISbStoryYoutubeChannelContent } from '@/types'
 
 export const useStoryStore = defineStore('story', () => {
   const runtimeConfig = useRuntimeConfig()
@@ -12,6 +12,7 @@ export const useStoryStore = defineStore('story', () => {
   const story = ref<ISbStoryData<ISbStoryDataContent> | null>(null)
   const ecosystemMediumUsers = ref<ISbStoryData<ISbStoryMediumUserContent>[]>([])
   const ecosystemTwitterUsers = ref<ISbStoryData<ISbStoryTwitterUserContent>[]>([])
+  const ecosystemYoutubeChannel = ref<ISbStoryData<ISbStoryYoutubeChannelContent>[]>([])
   const ecosystemUpdatesItems = ref<Record<string, ISbStoryData[]>>({})
   const ecosystemUpdatesPage = ref<Record<string, number>>({})
   const ecosystemUpdatesTotal = ref<Record<string, number>>({})
@@ -23,6 +24,10 @@ export const useStoryStore = defineStore('story', () => {
 
   function getTwitterUserByUUID(uuid: string) {
     return ecosystemTwitterUsers.value.find((user: ISbStoryData<ISbStoryTwitterUserContent>) => user.uuid === uuid)?.content
+  }
+
+  function getYoutubeChannelByUUID(uuid: string) {
+    return ecosystemYoutubeChannel.value.find((user: ISbStoryData<ISbStoryYoutubeChannelContent>) => user.uuid === uuid)?.content
   }
 
   function ecosystemUpdatesItemsLatest(url: string) {
@@ -111,6 +116,32 @@ export const useStoryStore = defineStore('story', () => {
     ecosystemTwitterUsers.value = data.value.data.stories
   }
 
+  async function loadEcosystemYoutubeChannel() {
+    if (ecosystemYoutubeChannel.value.length) return
+
+    const { data, error } = await useAsyncData<ISbResult, H3Error>(
+      async () => await storyblokApi.get('cdn/stories', {
+        version: runtimeConfig.public.storyblokContentVersion as 'draft' | 'published',
+        resolve_links: 'url',
+        starts_with: 'youtube-channel'
+      })
+    )
+
+    if (!data.value) throw createError({
+      statusCode: 404,
+      statusMessage: 'The page you’re looking for can’t be found.',
+      fatal: true
+    })
+
+    if (error.value) throw createError({
+      statusCode: error.value.statusCode,
+      statusMessage: 'An unexpected error occurred.',
+      fatal: true
+    })
+
+    ecosystemYoutubeChannel.value = data.value.data.stories
+  }
+
   async function loadEcosystemUpdates(url: string) {
     ecosystemUpdatesPage.value[url] = 1
 
@@ -183,11 +214,13 @@ export const useStoryStore = defineStore('story', () => {
     ecosystemUpdatesTotal,
     getMediumUserByUUID,
     getTwitterUserByUUID,
+    getYoutubeChannelByUUID,
     ecosystemUpdatesItemsLatest,
     ecosystemUpdatesTotalReached,
     loadStory,
     loadEcosystemMediumUsers,
     loadEcosystemTwitterUsers,
+    loadEcosystemYoutubeChannel,
     loadEcosystemUpdates,
     loadMoreEcosystemUpdates
   }

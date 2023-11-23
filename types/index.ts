@@ -173,6 +173,11 @@ export interface ISbStoryTwitterUserContent extends ISbComponentType<string> {
   link: string,
 }
 
+export interface ISbStoryYoutubeChannelContent extends ISbComponentType<string> {
+  avatar: ISbAsset,
+  name: string,
+}
+
 export interface IGridLayout {
   fullHeight: boolean | null,
   autoFlow: string | null,
