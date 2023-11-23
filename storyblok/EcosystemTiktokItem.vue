@@ -40,7 +40,6 @@ const { data: video } = await useFetch<IVideoItem>(url, { key: props.blok.videoL
     <div class="relative mb-4 rounded-md overflow-hidden aspect-[9/16]">
       <img
         :src="video.thumbnail_url"
-        :sizes="`50vw, (min-width: ${screens.sm}) 33.333vw, (min-width: ${screens.lg}) 25vw`"
         :alt="video.title"
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
       >

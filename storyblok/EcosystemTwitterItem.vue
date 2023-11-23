@@ -46,12 +46,12 @@ onMounted(() => emit('rendered', rootRef.value))
             class="rounded-full border border-grey-400 mr-2"
           >
 
-          <div class="group-hover/user:text-beige-200 transition-colors">
+          <div class="group-hover/user:text-beige-200 transition-colors overflow-hidden">
             <div class="font-semibold">
               {{ user.username }}
             </div>
 
-            <div class="text-xs">
+            <div class="text-xs text-ellipsis overflow-hidden">
               {{ user.handle }}
             </div>
           </div>
