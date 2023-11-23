@@ -347,6 +347,15 @@
   {
     "id": "8c4ab7da-57c3-4325-8c3b-14869bf564c4",
     "icon": "GLTO.png",
+    "coverImage": "cover_gelotto.jpg",
+    "appPreviews": [
+      "app-previews/gelotto/1.jpg",
+      "app-previews/gelotto/2.jpg",
+      "app-previews/gelotto/3.jpg",
+      "app-previews/gelotto/4.jpg",
+      "app-previews/gelotto/5.jpg",
+      "app-previews/gelotto/6.jpg"
+    ],
     "title": "Gelotto",
     "shortDescription": "IBC luck based game platform built on Juno.",
     "longDescription": "IBC luck based game platform built on Juno.",
