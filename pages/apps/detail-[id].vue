@@ -10,6 +10,7 @@ import { ButtonVariant, Spacing, Typography } from '@/types'
 import type { IApp } from '@/types'
 
 const route = useRoute()
+const router = useRouter()
 const appsStore = useAppsStore()
 const linkStore = useLinksStore()
 const runtimeConfig = useRuntimeConfig()
@@ -34,12 +35,12 @@ useSeoMeta({
   twitterImage: `${runtimeConfig.public.metaLocationOrigin}/ecosystem/icons/${app?.icon || 'fallback-app-icon.webp'}` ?? ''
 })
 
-const backLink = computed(() => {
-  if (process.server || !app) return '/'
-  if (!history.state.back) return `/${linkStore.getLinkByAppCategory(app.category)?.slug}`
+function goBack() {
+  if (!app) return router.push('/')
+  if (!history.state.back) return router.push(`/${linkStore.getLinkByAppCategory(app.category)?.slug}`)
 
-  return history.state.back
-})
+  return router.go(-1)
+}
 </script>
 
 <template>
@@ -60,8 +61,8 @@ const backLink = computed(() => {
           <div class="flex flex-wrap gap-6">
             <AppButton
               :variant="ButtonVariant.ArrowLeft"
-              :to="backLink"
               class="shrink-0"
+              @click="goBack"
             />
 
             <div class="flex gap-6 max-sm:basis-full">
