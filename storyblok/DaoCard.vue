@@ -33,7 +33,7 @@ const props = defineProps({
 })
 const { $imageService } = useNuxtApp()
 
-const { data: dao, error } = await useFetch<IDao>(props.blok.url, { key: props.blok._uid })
+const { data: dao, error } = await useLazyFetch<IDao>(props.blok.url, { key: props.blok._uid, server: false })
 const coverImage = computed<string | undefined>(() => {
   if (props.blok.coverImage?.filename) return $imageService(props.blok.coverImage.filename)
   if (dao.value?.cover) return getIPFSImage(dao.value.cover)
@@ -48,7 +48,7 @@ function getIPFSImage(url: string) {
 
 <template>
   <div
-    v-if="dao && !error"
+    v-if="!error"
     class="relative flex flex-col justify-between h-full rounded-lg overflow-hidden bg-brown-300 before:shadow-inner before:shadow-beige-200/10 before:pointer-events-none before:w-full before:h-full before:absolute before:z-50 before:rounded-lg"
   >
     <div>
@@ -63,7 +63,7 @@ function getIPFSImage(url: string) {
           class="absolute top-0 left-0 w-full h-full object-cover"
         >
 
-        <div class="relative z-20 flex items-center">
+        <div v-if="dao" class="relative z-20 flex items-center">
           <img
             v-if="dao.image && dao.name"
             :src="getIPFSImage(dao.image)"
@@ -95,7 +95,7 @@ function getIPFSImage(url: string) {
 
       <div class="px-6 pt-2">
         <p
-          v-if="dao.description"
+          v-if="dao?.description"
           class="text-ellipsis line-clamp-3 overflow-hidden"
         >
           {{ dao.description }}
@@ -105,26 +105,26 @@ function getIPFSImage(url: string) {
 
     <div class="px-6 pb-6">
       <div class="flex gap-6 mt-5 mb-8">
-        <div v-if="dao.lastActivity">
+        <div>
           <div>Last Activity</div>
 
-          <div class="text-beige-200 font-semibold">
+          <div v-if="dao?.lastActivity" class="text-beige-200 font-semibold">
             {{ dayjs(dao.lastActivity).fromNow() }}
           </div>
         </div>
 
-        <div v-if="dao.proposalCount">
+        <div>
           <div>Proposals</div>
 
-          <div class="text-beige-200 font-semibold">
+          <div v-if="dao?.proposalCount" class="text-beige-200 font-semibold">
             {{ dao.proposalCount }}
           </div>
         </div>
 
-        <div v-if="dao.memberCount">
+        <div>
           <div>Members</div>
 
-          <div class="text-beige-200 font-semibold">
+          <div v-if="dao?.memberCount" class="text-beige-200 font-semibold">
             {{ dao.memberCount }}
           </div>
         </div>

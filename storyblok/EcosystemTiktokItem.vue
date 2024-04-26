@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/js/dist/types'
-import screens from '#tailwind-config/theme/screens'
 
 interface ISbBlokData extends SbBlokData {
   videoLink: string,

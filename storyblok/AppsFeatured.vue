@@ -23,7 +23,7 @@ const props = defineProps({
 })
 const appsStore = useAppsStore()
 const url = 'https://indexer.daodao.zone/juno-1/contract/juno1el3vtsz7l4mw77nm9723t3uxud38mmth8f3nhq9n4washqndsudsg3xez6/daoCore/listItems'
-const { data: featuredAppIDs } = await useLazyFetch<FeaturedApps[]>(url, { key: 'juno-app-dao-featured-apps' })
+const { data: featuredAppIDs, error, pending } = await useLazyFetch<FeaturedApps[]>(url, { key: 'juno-app-dao-featured-apps', server: false })
 
 const featuredApps = computed(() => {
   if (!featuredAppIDs?.value) return undefined
@@ -44,7 +44,7 @@ const featuredApps = computed(() => {
 </script>
 
 <template>
-  <template v-if="featuredApps && featuredApps.length">
+  <template v-if="featuredApps && featuredApps.length && !error">
     <div
       v-if="blok.preview"
       class="grid md:grid-cols-2 md:grid-rows-3 gap-x-6 gap-y-6"
@@ -91,6 +91,7 @@ const featuredApps = computed(() => {
       </LazyHoverPopup>
     </div>
   </template>
+  <div v-else-if="pending" />
   <div v-else>
     Failed to load apps.
   </div>
