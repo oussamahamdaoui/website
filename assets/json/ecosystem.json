@@ -947,5 +947,24 @@
     "discord": "",
     "twitter": "https://twitter.com/swiftprotocol",
     "telegram": ""
+  },
+  {
+    "id": "87887883-4ffb-4754-b9d9-624b13dfa751",
+    "icon": "emporion.svg",
+    "coverImage": "cover_emporion.jpg",
+    "appPreviews": [
+      "app-previews/emporion/1.jpg",
+      "app-previews/emporion/2.jpg",
+      "app-previews/emporion/3.jpg"
+    ],
+    "title": "Emporion",
+    "shortDescription": "Emporion is a decentralized marketplace that equips sellers with advanced tools, maintains low fees, and ensures trust through blockchain-stored ratings and FairSlilt ratio",
+    "longDescription": "Emporion is a decentralized marketplace that equips sellers with advanced tools, maintains low fees, and ensures trust through blockchain-stored ratings and FairSlilt ratio",
+    "category": "Consumer",
+    "website": "https://emporion.network/",
+    "github": "https://github.com/emporion-Network/",
+    "discord": "",
+    "twitter": "https://x.com/EmporionNetwork",
+    "telegram": "https://t.me/+SHAsEPzMnHRmMzdk"
   }
 ]
